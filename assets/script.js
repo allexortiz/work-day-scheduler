@@ -7,17 +7,8 @@ var containerEl = $('.container');
 //get current time in hA format
 var currentHour = moment().hour();
 //create array that lists all of the hours for current work day
-var workDayHours = [
-    moment().hour(9).format('hA'),
-    moment().hour(10).format('hA'),
-    moment().hour(11).format('hA'),
-    moment().hour(12).format('hA'),
-    moment().hour(13).format('hA'),
-    moment().hour(14).format('hA'),
-    moment().hour(15).format('hA'),
-    moment().hour(16).format('hA'),
-    moment().hour(17).format('hA')
-];
+
+
 $(function () {
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
