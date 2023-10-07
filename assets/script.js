@@ -33,4 +33,28 @@ $(function () {
       localStorage.setItem(key, value);
     });
   }
+  // this function will update the color of each timeblock based on the current time
+  function updateColor() {
+    var currentHour = parseInt(dayjs().format('H'));
+    $('.time-block').each(function () {
+      var blockHour = parseInt($(this).attr('id').split('-')[1]);
+      if (blockHour < currentHour) {
+        $(this).addClass('past');
+      } else if (blockHour === currentHour) {
+        $(this).addClass('present');
+      } else {
+        $(this).addClass('future');
+      }
+    });
+  }
+// this will retrieve what was saved to localStorage and display it in the time block upon saving and refreshing
+  $('.time-block').each(function() {
+    var key = $(this).attr('id');
+    var value = localStorage.getItem(key);
+    $(this).children('.description').val(value);
+  });
+// calls all three functions to happen at once.
+  hourlyColor();
+  textEntry();
+  updateColor();
 });
