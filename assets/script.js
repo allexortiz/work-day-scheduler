@@ -25,4 +25,12 @@ $(function () {
       $(this).toggleClass('future', blockHour > currentHour);
     });
   }
+  // this function will save text to the local storaged when the button is clicked
+  function textEntry() {
+    $('.saveBtn').on('click', function () {
+      var key = $(this).parent().attr('id');
+      var value = $(this).siblings('.description').val();
+      localStorage.setItem(key, value);
+    });
+  }
 });
