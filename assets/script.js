@@ -4,12 +4,12 @@
 var currentDayEl = $('#currentDay');
 //target containter <div>
 var containerEl = $('.container');
-//get current time in hA format
-var currentHour = moment().hour();
-//create array that lists all of the hours for current work day
 
 
 $(function () {
+
+  var currentDate = dayjs().format("dddd, MMMM D, YYYY");
+  currentDayEl.text(currentDate);
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
