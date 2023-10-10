@@ -2,24 +2,20 @@
 var containerEl = $('.container');
 //target <p> element for currentDay to display
 var currentDayEl = $('#currentDay');
-// //target <p> element for currentTime to display
-// var currentTimeEl = $('#currentTime');
- //target <p> element for currentDay to display
-  var currentDate = dayjs().format("dddd, MMMM D, YYYY");
-  //target container <div>
-  currentDayEl.text(currentDate);
-  // //target <p> element for currentTime to display
-  // var currentTime = dayjs().format("hh:mm:ss A");
-  //   //target container <div>
-  // currentTimeEl.text(currentTime);
+//target <p> element for currentDay to display
+var currentDate = dayjs().format("dddd, MMMM D, YYYY");
+//target container <div>
+currentDayEl.text(currentDate);
 
 $(function () {
- 
-  var currentHour = dayjs().format('H');
-// this funtion changes the color of the time block based on the current time
+
+  var currentHour = parseInt(dayjs().format('H'));
+  // this funtion changes the color of the time block based on the current time by toggling on/off the classes.
   function hourlyColor() {
-    $('.time-block').each(function() {
-      var blockHour = parseInt(this.id);
+    $('.time-block').each(function () {
+      var blockHour = parseInt(this.id.split("-")[1]);
+      // console.log(blockHour);
+      // console.log("result", typeof currentHour);
       $(this).toggleClass('past', blockHour < currentHour);
       $(this).toggleClass('present', blockHour === currentHour);
       $(this).toggleClass('future', blockHour > currentHour);
@@ -33,28 +29,13 @@ $(function () {
       localStorage.setItem(key, value);
     });
   }
-  // this function will update the color of each timeblock based on the current time
-  function updateColor() {
-    var currentHour = parseInt(dayjs().format('H'));
-    $('.time-block').each(function () {
-      var blockHour = parseInt($(this).attr('id').split('-')[1]);
-      if (blockHour < currentHour) {
-        $(this).addClass('past');
-      } else if (blockHour === currentHour) {
-        $(this).addClass('present');
-      } else {
-        $(this).addClass('future');
-      }
-    });
-  }
-// this will retrieve what was saved to localStorage and display it in the time block upon saving and refreshing
-  $('.time-block').each(function() {
+  // this will retrieve what was saved to localStorage and display it in the time block upon saving and refreshing
+  $('.time-block').each(function () {
     var key = $(this).attr('id');
     var value = localStorage.getItem(key);
     $(this).children('.description').val(value);
   });
-// calls all three functions to happen at once.
+  // calls both functions to happen at once.
   hourlyColor();
   textEntry();
-  updateColor();
 });
