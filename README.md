@@ -19,3 +19,16 @@ WHEN I click the save button for that timeblock
 THEN the text for that event is saved in local storage
 WHEN I refresh the page
 THEN the saved events persist
+
+## Description
+I have created a work day scheduler that will allow you to record appointments in a work hour time block, save them to the localStorage upon hitting the save button, and then keep them displayed when you refresh the page. Past appointments will be displayed in grey, current appointments will be displayed in red, and future appointments will be displayed in green.
+
+## Images
+![first half of page](<assets/images/first half.png>)
+![second half of page](<assets/images/second half.png>)
+
+## Links
+
+github repository: https://github.com/allexortiz/work-day-scheduler
+
+website: https://allexortiz.github.io/work-day-scheduler/
